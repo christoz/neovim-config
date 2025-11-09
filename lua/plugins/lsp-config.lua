@@ -32,6 +32,10 @@ return {
         vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
       end
 
+      -- Get capabilities from nvim-cmp for LSP completion
+      local capabilities = vim.lsp.protocol.make_client_capabilities()
+      capabilities = vim.tbl_deep_extend('force', capabilities, require('cmp_nvim_lsp').default_capabilities())
+
       -- Create autocmd to start LSP servers for specific filetypes
       vim.api.nvim_create_autocmd('FileType', {
         pattern = { 'lua' },
@@ -40,6 +44,7 @@ return {
             name = 'lua_ls',
             cmd = { 'lua-language-server' },
             root_dir = vim.fs.root(0, { '.luarc.json', '.luarc.jsonc', '.luacheckrc', '.stylua.toml', 'stylua.toml', 'selene.toml', 'selene.yml', '.git' }),
+            capabilities = capabilities,
           })
         end,
       })
@@ -51,6 +56,7 @@ return {
             name = 'ts_ls',
             cmd = { 'typescript-language-server', '--stdio' },
             root_dir = vim.fs.root(0, { 'package.json', 'tsconfig.json', 'jsconfig.json', '.git' }),
+            capabilities = capabilities,
           })
         end,
       })
