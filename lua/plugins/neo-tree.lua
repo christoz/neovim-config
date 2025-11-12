@@ -22,4 +22,5 @@ return {
     -- Keymap for Neotree
     vim.keymap.set('n', '<C-n>', ':Neotree filesystem toggle reveal left <CR>')
   end
+
 }

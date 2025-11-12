@@ -1,0 +1,63 @@
+=========================================
+   VIM / NEOVIM COMMAND CHEAT SHEET
+=========================================
+
+--- File / Editor -----------------------
+COMMAND             DESCRIPTION
+nvim [filename]     Open a file in Neovim.
+:q                  Quit the editor.
+
+
+--- Navigation --------------------------
+COMMAND             DESCRIPTION
+h, j, k, l          Move cursor left, down, up, right.
+
+
+--- Search ------------------------------
+COMMAND             DESCRIPTION
+*                   Search for all instances of the word under the cursor.
+n                   Jump to the next search match.
+N                   Jump to the previous search match.
+
+
+--- Editing -----------------------------
+COMMAND             DESCRIPTION
+ciw                 Change In Word (deletes word and enters Insert mode).
+.                   Repeat the last command.
+
+
+--- Global Replace ----------------------
+COMMAND             DESCRIPTION
+:%s/old/new/g       Substitute all 'old' with 'new' in the entire file.
+:%s/old/new/gc      Same as above, but with a confirmation prompt.
+
+
+--- Copy & Paste (Yank & Put) -----------
+COMMAND             DESCRIPTION
+y                   Yank (copy) text (e.g., 'yy' to yank a line).
+viw                 Visually select In Word.
+p                   Put (paste) text after the cursor.
+
+
+--- Registers ---------------------------
+COMMAND             DESCRIPTION
+:reg                Display the contents of all registers.
+"[register]y        Yank text into a specific register (e.g., "7y).
+"[register]p        Paste content from a specific register (e.g., "3p).
+
+
+--- System Clipboard --------------------
+COMMAND             DESCRIPTION
+"+y                 Yank to system clipboard (Linux/Windows).
+"*y                 Yank to system clipboard (macOS).
+"+p or "*p          Paste from system clipboard.
+
+
+--- Macros ------------------------------
+COMMAND             DESCRIPTION
+q[register]         Start recording a macro into a register (e.g., qh).
+q                   Stop recording the macro.
+@[register]         Replay the macro from a register (e.g., @h).
+[num]@[register]    Replay the macro a specific number of times (e.g., 5@h).
+
+-----------------------------------------
