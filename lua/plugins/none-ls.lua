@@ -19,5 +19,21 @@ return {
 		})
 
 		vim.keymap.set("n", "<leader>gf", vim.lsp.buf.format, {})
+
+		-- Format Lua files on save
+		vim.api.nvim_create_autocmd("BufWritePre", {
+			pattern = "*.lua",
+			callback = function()
+				vim.lsp.buf.format()
+			end,
+		})
+
+		-- Format TypeScript/JavaScript files on save
+		vim.api.nvim_create_autocmd("BufWritePre", {
+			pattern = { "*.ts", "*.tsx", "*.js", "*.jsx" },
+			callback = function()
+				vim.lsp.buf.format()
+			end,
+		})
 	end,
 }

@@ -8,6 +8,14 @@ return {
   },
   config = function()
     require('neo-tree').setup({
+      filesystem = {
+        filtered_items = {
+          visible = true, -- Show hidden files
+          hide_dotfiles = false,
+          hide_gitignored = false,
+          hide_by_name = {},
+        },
+      },
       event_handlers = {
         {
           event = 'file_opened',
