@@ -28,7 +28,8 @@ return {
           find_files = {
             hidden = true,
             -- Use fd for faster searching (falls back to find if fd not available)
-            find_command = { "fd", "--type", "f", "--hidden", "--exclude", "node_modules", "--exclude", ".git" },
+            -- --no-ignore allows searching in gitignored directories
+            find_command = { "fd", "--type", "f", "--hidden", "--no-ignore", "--exclude", "node_modules", "--exclude", ".git" },
           },
         },
         extensions = {

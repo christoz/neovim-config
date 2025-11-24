@@ -7,6 +7,7 @@ return {
   lazy = false,
   opts = {
     bigfile = { enabled = true },
+    dim = { enabled = false },
     dashboard = {
       enabled = true,
       preset = {
@@ -24,7 +25,7 @@ return {
     },
     indent = { enabled = true },
     input = { enabled = true },
-    git = { enabled = true },
+    git = { enabled = false },
     picker = { enabled = true },
     notifier = { enabled = true },
     quickfile = { enabled = true },

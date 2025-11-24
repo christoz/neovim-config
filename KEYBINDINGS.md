@@ -4,10 +4,9 @@
 - Leader: `<space>` (default)
 
 ## Which-Key
-Press `<space>` and wait ~1 second to see available keybindings!
-- Shows what keys you can press next
-- Press the shown key to execute or see more options
-- Example: `<space>` → `g` → shows all git commands
+**DISABLED** - which-key popup has been disabled for faster workflow.
+- Use this cheat sheet to reference keybindings
+- Or use `:Telescope keymaps` to search available keybindings
 
 ## Git Commands
 
@@ -24,13 +23,100 @@ Press `<space>` and wait ~1 second to see available keybindings!
 | Key | Command | Description |
 |-----|---------|-------------|
 | `K` | Hover | Show documentation |
-| `<leader>gd` | Go to Definition | Jump to definition |
-| `<leader>gr` | References | Show references |
+| `gd` | Go to Definition | Jump to definition |
+| `gD` | Go to Declaration | Jump to declaration |
+| `gr` | References | Show references |
 | `<leader>ca` | Code Actions | Show code actions |
 | `<space>rn` | Rename | Rename symbol |
-| `<leader>e` | Diagnostics | Open diagnostic float |
-| `[d` | Previous Diagnostic | Go to previous error |
-| `]d` | Next Diagnostic | Go to next error |
+
+### LSP Diagnostics (TypeScript Errors)
+| Key | Command | Description |
+|-----|---------|-------------|
+| `<space>e` | Show Diagnostic | Open diagnostic float with error details |
+| `]d` | Next Diagnostic | Go to next error/warning |
+| `[d` | Previous Diagnostic | Go to previous error/warning |
+
+**Workflow for viewing TypeScript errors:**
+1. Navigate between errors: `]d` / `[d`
+2. View full error details: `<space>e`
+3. Jump to definition if needed: `gd`
+
+**Copying diagnostic text to clipboard:**
+1. Open diagnostic: `<space>e`
+2. Enter the float window: `<C-w>w` (Ctrl+w, then w)
+3. Visual select the text: `V` (line-wise) or `v` (character-wise)
+4. Copy to system clipboard: `"+y` or use `:w !pbcopy`
+5. Paste anywhere with `Cmd+V`
+
+### Autocomplete (Code Completion)
+| Key | Command | Description |
+|-----|---------|-------------|
+| `<C-n>` | Next Suggestion | Move to next autocomplete item (Ctrl+n) |
+| `<C-p>` | Previous Suggestion | Move to previous autocomplete item (Ctrl+p) |
+| `<CR>` | Select Item | Accept highlighted suggestion (Enter) |
+| `<C-y>` | Confirm | Accept first suggestion immediately |
+| `<C-e>` | Close Menu | Dismiss autocomplete menu |
+
+**Note:** `Tab` is reserved for snippet expansion, not completion selection!
+
+## File Navigation
+
+### Jump Between Files
+| Key | Command | Description |
+|-----|---------|-------------|
+| `gf` | Go to File | Open file path under cursor |
+| `Ctrl-o` | Jump Back | Return to previous location |
+| `Ctrl-i` | Jump Forward | Go forward in jump list |
+| `Ctrl-^` | Toggle Files | Switch between current and previous file |
+
+### Marks (Bookmarks)
+| Key | Command | Description |
+|-----|---------|-------------|
+| `ma` | Set Mark | Set local mark 'a' (use a-z) |
+| `'a` | Go to Mark | Jump to mark 'a' |
+| `mA` | Set Global Mark | Set global mark 'A' (use A-Z, works across files) |
+| `'A` | Go to Global Mark | Jump to global mark 'A' from any file |
+
+### Buffers
+| Command | Description |
+|---------|-------------|
+| `:ls` | List all open buffers |
+| `:b#` | Go to previous buffer |
+| `:b<number>` | Go to buffer by number |
+| `:b<name>` | Go to buffer by name (supports tab completion) |
+
+### File Operations
+| Command | Description |
+|---------|-------------|
+| `:e` or `:edit` | Reload current file |
+| `:e!` | Reload current file and discard unsaved changes |
+| `:w` | Save file |
+| `:w!` | Force save file |
+
+### Workflow Example
+1. Set a mark before navigating: `ma`
+2. Jump to file under cursor: `gf`
+3. Return to mark: `'a` or just use `Ctrl-o`
+
+## Search & Replace
+
+### Search Navigation
+| Key | Command | Description |
+|-----|---------|-------------|
+| `/pattern` | Search Forward | Search for pattern in document |
+| `?pattern` | Search Backward | Search backwards for pattern |
+| `n` | Next Match | Jump to next search result |
+| `N` | Previous Match | Jump to previous search result |
+| `*` | Search Word Forward | Search word under cursor (forward) |
+| `#` | Search Word Backward | Search word under cursor (backward) |
+| `/<Enter>` | Repeat Search | Repeat last search forward |
+| `?<Enter>` | Repeat Backward | Repeat last search backward |
+
+### Search Tips
+- Press `/` then type your search term, then `Enter`
+- Use `n` and `N` to cycle through all matches
+- `*` is super useful - just put cursor on a word and press it!
+- Clear search highlighting: `:noh` or `:nohlsearch`
 
 ## gh-dash Keybindings (inside dashboard)
 
