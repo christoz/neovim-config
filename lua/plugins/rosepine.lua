@@ -12,6 +12,6 @@ return {
         NormalNC = { bg = "none" },
       },
     })
-    vim.cmd("colorscheme rose-pine")
+    -- vim.cmd("colorscheme rose-pine")
   end
 }

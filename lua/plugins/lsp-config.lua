@@ -9,7 +9,7 @@ return {
     'williamboman/mason-lspconfig.nvim',
     config = function()
       require('mason-lspconfig').setup({
-        ensure_installed = { 'lua_ls', 'ts_ls' }
+        ensure_installed = { 'lua_ls', 'ts_ls', 'tailwindcss' }
       }) 
     end
   },
@@ -56,6 +56,18 @@ return {
             name = 'ts_ls',
             cmd = { 'typescript-language-server', '--stdio' },
             root_dir = vim.fs.root(0, { 'package.json', 'tsconfig.json', 'jsconfig.json', '.git' }),
+            capabilities = capabilities,
+          })
+        end,
+      })
+
+      vim.api.nvim_create_autocmd('FileType', {
+        pattern = { 'html', 'css', 'javascript', 'javascriptreact', 'typescript', 'typescriptreact', 'vue', 'svelte' },
+        callback = function()
+          vim.lsp.start({
+            name = 'tailwindcss',
+            cmd = { 'tailwindcss-language-server', '--stdio' },
+            root_dir = vim.fs.root(0, { 'tailwind.config.js', 'tailwind.config.ts', 'tailwind.config.cjs', '.git' }),
             capabilities = capabilities,
           })
         end,
