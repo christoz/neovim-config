@@ -1,3 +1,6 @@
+-- Ensure Neovim can find binaries in common locations
+vim.env.PATH = vim.env.PATH .. ":/usr/local/go/bin:/Users/chz/.local/bin:/opt/homebrew/bin:/opt/homebrew/sbin"
+
 vim.cmd("set expandtab")
 vim.cmd("set tabstop=2")
 vim.cmd("set softtabstop=2")

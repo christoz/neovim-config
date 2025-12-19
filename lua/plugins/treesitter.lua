@@ -16,6 +16,10 @@ return {
           "typescript",
           "json",
           "lua",
+          "go",
+          "gomod",
+          "gosum",
+          "gowork"
         },
         highlight = { enable = true },
         indent = { enable = false },
