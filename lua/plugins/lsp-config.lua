@@ -9,7 +9,7 @@ return {
     'williamboman/mason-lspconfig.nvim',
     config = function()
       require('mason-lspconfig').setup({
-        ensure_installed = { 'lua_ls', 'ts_ls', 'tailwindcss' }
+        ensure_installed = { 'lua_ls', 'ts_ls', 'tailwindcss', 'gopls' }
       }) 
     end
   },
@@ -68,6 +68,18 @@ return {
             name = 'tailwindcss',
             cmd = { 'tailwindcss-language-server', '--stdio' },
             root_dir = vim.fs.root(0, { 'tailwind.config.js', 'tailwind.config.ts', 'tailwind.config.cjs', '.git' }),
+            capabilities = capabilities,
+          })
+        end,
+      })
+
+      vim.api.nvim_create_autocmd('FileType', {
+        pattern = { 'go' },
+        callback = function()
+          vim.lsp.start({
+            name = 'gopls',
+            cmd = { vim.fn.stdpath('data') .. '/mason/bin/gopls' },
+            root_dir = vim.fs.root(0, { 'go.mod', '.git' }),
             capabilities = capabilities,
           })
         end,
